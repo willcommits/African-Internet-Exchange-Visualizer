@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AIXV</title>
+	<link rel="stylesheet" type="text/css" href="C:/Users/renda/Desktop/aixv-project-AIXV/css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/mainhome.css') }}">
+	<style>
+		
+	</style>
+
+</head>
+<body>
+	
+		
+		<div class="main">
+		<nav class="navbar">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+					<img src="{{ url_for('static', filename='Images/africa.png') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+					AIXV
+				</a>
+			</div>
+		</nav>
+
+		 </div>
+
+
+ <div class="containercardviz">
+	<div class="maintext">
+		<div class="titleHeadertext">
+			<div><h1 class="africantitle">Africa Internet Exchange</h1></div>
+			<div ><h3 class="vizname">Visualizer</h3></div>
+		</div>
+   </div>
+ </div>
+
+ <div class="cards">
+
+	<a class="nav-link" href="{{ url_for('ixpView') }}">
+		<button class="ixp">
+			<h2>IXP View</h2>
+			<p>Africa's Internet Exchange Points, discover connected Autonomous Systems and Information.</p>
+			<img src="{{ url_for('static', filename='Images/ixp.png') }}" alt="Play Icon">
+		</button>
+	 </a>
+
+
+	 <a class="nav-link" href="{{ url_for('asView') }}">
+
+		<button class="national">
+			<h2>AS View</h2>
+			<p>AS nodes and their link relationships. reveal each node's details and its connections.</p>
+			<img src="{{ url_for('static', filename='Images/sp.png') }}" alt="Play Icon">
+		</button>
+
+	 </a>
+	 <a class="nav-link" href="{{ url_for('edit') }}">
+
+		<button class="edit">
+			<h2>Edit Studio+</h2>
+			<p>AS nodes and their link relationships. reveal each node's details and its connections.</p>
+			<img src="{{ url_for('static', filename='Images/sp.png') }}" alt="Play Icon">
+		</button>
+
+	 </a>
+ </div>
+        
+
+  
+
+</body>
+</html>

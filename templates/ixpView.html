@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- This is the IXP view page -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS View Map</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ixp.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- External JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('index') }}"><img
+                src="{{ url_for('static', filename='Images/africa.png') }}" alt="Logo" width="30" height="30"> AIXV</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('asView') }}">ASview</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('edit') }}">Editstudio</a></li>
+                <li class="nav-item"><a class="nav-link"  href="{{ url_for('document') }}">Documentation</a></li>
+             
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link experiment" href="{{ url_for('editIXP') }}">Experiment</a></li> <!-- Added Experiment Button -->
+        </ul>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Map Display -->
+    <div id="map"></div>
+    <!-- The Card displayed next to the countries -->
+    <div id="country-info" class="card" style="width: 160px; position: absolute; opacity: 0.9;">
+        <button type="button" class="close" id="close-card" aria-label="Close" style="margin: 10px;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="card-body">
+            <h6 class="card-title bold-open-sans" id="country-name">Jinx</h6>
+            <div class="card-text d-flex">
+                <span class="label-num bold-open-sans mx-auto" id="label-1">Johannesburg</span>
+            </div>
+            <div class="card-text d-flex">
+                <span class="label-num bold-open-sans" id="label-2">234</span>
+                <div class="as-label-wrap">
+                    <span class="as-label">Sysems</span>
+                </div>
+            </div>
+            <button class="btn btn-primary custom-button" id="view-network">View Network</button>
+        </div>
+    </div>
+
+    </div>
+
+<!-- Main Modal for Viewing the network topology -->
+    <div class="modal fade" id="networkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content" style="width: 95vw; height: 90vh; margin: auto;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="leftdetails">
+                    <div class="flagvisual">
+                        <div>
+
+                        </div>
+                        <div class="flagname">
+                            <h1 id="IXPcountryName">Sudan</h1>
+                        </div>
+                    </div>
+                    <svg class="network" width="100%" height="400px"></svg>
+
+                    <div class="ixpinfocenter">
+                        <div class="ixpinfocenterleft">
+                            <div class="IXPdetailsCard">
+
+                                <div class="topdetails">
+                                    <div>
+                                        <label for="ixpname">Name:</label>
+                                        <span id="ixpname">PCHAS3856</span>
+                                    </div>
+                                    <div>
+                                        <label for="ixpid">ID:</label>
+                                        <span id="ixpid">234</span>
+                                    </div>
+                                    <div>
+                                        <label for="ixpWebsite">Website:</label>
+                                        <a id="ixpWebsite" href="#">https://pch.net</a>
+                                    </div>
+                                    <div>
+                                        <label for="ixpNetCount">Network Count:</label>
+                                        <span id="ixpNetCount">851</span>
+
+                                    </div>
+                                </div>
+
+                                <div class="belowdetails">
+                                    <div class="cardadditonaldetails">
+                                        <div>
+                                            <label for="ixpCity">City:</label>
+                                            <span id="ixpCity">Johannesburg</span>
+                                        </div>
+                                        <div>
+                                            <label for="ixpStatus">Status:</label>
+                                            <span id="ixpStatus">OK</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ixpinfocenterright">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="{{ url_for('static', filename='js/IXPmap.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/IXPnewMain.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/IXPcomponents.js') }}"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- This is the As view Page  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS View Map</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/as.css') }}">
+
+    <!-- External JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('index') }}"><img
+                src="{{ url_for('static', filename='Images/africa.png') }}" alt="Logo" width="30" height="30"> AIXV</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('ixpView') }}">IXPview</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('edit') }}">Editstudio</a></li>
+                <li class="nav-item"><a class="nav-link"  href="{{ url_for('document') }}">Documentation</a></li>
+              
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <h3 style="color: white; padding-right: 10px;">NationalView</h3>
+              <a class="nav-link experiment" href="{{ url_for('experimentAS') }}">Experiment</a> <!-- Added Experiment Button -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Map Display -->
+    <div id="map"></div>
+        <!-- Card displyed next to IXP on click of Node -->
+    <div id="country-info" class="card" style="display: none;  width: 160px; position: absolute; opacity: 0.9;">
+        <button type="button" class="close" id="close-card" aria-label="Close" style="margin: 10px;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="card-body">
+            <img class="flag" src="https://flagsapi.com/ZA/flat/64.png" alt="">
+            <h6 class="card-title bold-open-sans" id="country-name">South Africa</h6>
+            <button class="btn btn-primary custom-button" id="view-network">View Network</button>
+        </div>
+    </div>
+<!-- Modal card for displaying As relationships and allow users to filter and obtain details -->
+    <div class="modal fade" id="networkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content" style="width: 95vw; margin: auto;">
+                <div class="content-row">
+                <!-- Close button added here -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Left Details Section -->
+                <div class="leftdetails">
+                    <div class="flagvisual">
+                        <div>
+                            <img class="flag2" src="https://flagsapi.com/ZA/flat/64.png" alt="">
+                        </div>
+                        <div class="flagname">
+                            <h1 id="IXPcountryName">Sudan</h1>
+                        </div>
+                    </div>
+                    <svg class="countryview" width="100%" height="400px"></svg>
+                </div>
+                <!-- Right details with Informations and Filters -->
+                <div class="rightdetails">
+                    <div class="filterheader">AS Degree</div>
+                    <div class="cardz">
+                        <div class="price-content">
+                          <div>
+                            <label>Min</label>
+                            <p id="min-value">0</p>
+                          </div>
+                  
+                          <div>
+                            <label>Max</label>
+                            <p id="max-value">1000</p>
+                          </div>
+                        </div>
+                  
+                          <div class="range-slider">
+                            <input type="range" class="min-price" value="0" min="0" max="1000" step="10">
+                            <input type="range" class="max-price" value="1000" min="00" max="1000" step="10">
+                          </div>
+                      </div>
+
+                    <div class="filterheader">Link Filter</div>
+                    <div class="container">
+                        <!-- New Toggles here -->
+                        <div class="row margin:0;">
+                            <div class="col-6">
+                                <span style="display: inline-block; width: 10px; height: 4px; background-color: blue; margin-right: 5px; vertical-align: middle;"></span><label style="font-size: small;">P2P</label>
+                            </div>
+                            <div class="col-6">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="toggle p2p" id="p2p" data-group="link">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row margin:0;">
+                            <div class="col-6">
+                                <span style="display: inline-block; width: 10px; height: 4px; background-color: red; margin-right: 5px; vertical-align: middle;"></span><label style="font-size: small;">P2C</label>
+                            </div>
+                            <div class="col-6">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="toggle p2c" id="c2p" data-group="link">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row margin:0;">
+                            <div class="col-6">
+                                <span style="display: inline-block; width: 10px; height: 4px; background-color: green; margin-right: 5px; vertical-align: middle;"></span><label style="font-size: small;">S2S</label>
+                            </div>
+                            <div class="col-6">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="toggle s2s" id="s2s" data-group="link">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <div class="usefulinfocard">
+
+            <div class="usefulinfocardleft">
+                <div class="nodedetailsheader">Node Details</div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="name">Name:</label>
+                                <span id="name"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="asn">ASN:</label>
+                                <span id="asn"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="rank">Rank:</label>
+                                <span id="rank"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="customers">Customers:</label>
+                                <span id="customers"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="providers">Providers:</label>
+                                <span id="providers"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="peers">Peers:</label>
+                                <span id="peers"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="siblings">Siblings:</label>
+                                <span id="siblings"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="total">Total:</label>
+                                <span id="total"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="usefulinfocardright">
+                <div class="tableheaders">
+                    <div class="pathheader">Path Details</div>
+                    <div class="sourceheader"><p>Source: <span id="pathSource">______</span></p> </div>
+                    <div class="destinationheader"> <p>Destination: <span id="pathDestination">______</span></p></div>
+                    <div class="connectiontype"><p id="message" style="font-weight: bold; color: black;"></p></div>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Relationship Type</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pathDetails">
+                    </tbody> 
+                </table>
+            </div>
+           </div>
+            
+        </div>
+        </div>
+    </div>
+
+
+    
+    <!-- Existing scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="module" src="{{ url_for('static', filename='js/aSmap.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/aSComponents.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/ASMain.js') }}"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,849 @@
+body {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+#map {
+    width: 100%;
+    height: 100vh;
+}
+
+.mapboxgl-ctrl-geocoder {
+    width: 300px;
+    border-radius: 15px;
+    top: 5px !important;
+    left: -250px !important;
+    transform: translateX(-50%);
+
+}
+
+.navbar {
+    background-color: #1CC102 !important;
+}
+
+.navbar-nav .nav-link,
+.navbar-brand {
+    color: white !important;
+}
+
+.card-body {
+    text-align: center;
+    padding: 1rem;
+}
+
+.flag {
+    width: 80px;
+    /* Reduced size */
+    height: 40px;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    margin-bottom: 0.5rem;
+}
+
+.label-num {
+    flex: 0 0 50px;
+}
+
+.as-label-wrap {
+    width: calc(100% - 50px);
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.bold-open-sans {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+.custom-button {
+    border-radius: 15px;
+    background-color: #1BA7E3;
+    color: #E4F7FF;
+    padding: 5px 10px;
+}
+
+.modal-content {
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column; /* Change to column so that items stack vertically */
+    justify-content: flex-start; /* Align items to the start */
+    background-color: #F5F5F5;
+    border-radius: 30px;
+    flex: 1;
+    max-height: 95vh; /* Set a maximum height to the viewport height */
+    overflow-y: auto; /* Make it scrollable if the content exceeds the height */
+}
+
+.modal-body {
+    flex: 1; /* This will allow it to grow and shrink with content */
+    overflow-y: auto; /* If the content inside modal-body is too much, it will become scrollable */
+}
+
+/* Other styles remain unchanged */
+
+
+.leftdetails {
+    flex: 0.9;
+    width: 500px;
+    height: 700;
+
+}
+
+.rightdetails {
+    flex: 0.2;
+    width: 500px;
+    height: 700;
+
+}
+
+.flagimage {
+    width: 66px;
+    height: 38px;
+    margin-right: 10px;
+}
+
+.flagvisual {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 40px;
+    height: 20px;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.custom-combobox .info-type-select {
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 10px;
+    padding: 7px 14px;
+    border: 1px solid #B8BBC2;
+    background-color: #fff;
+    width: 100%;
+
+}
+
+.custom-combobox .info-type-select:focus {
+    border-color: #1BA7E3;
+    outline: none;
+}
+
+.custom-combobox .info-type-select option {
+    padding: 5px 10px;
+}
+
+.IXPdetailsCard {
+    padding: 5px 50px;
+    margin-left: 30px;
+    width: 85%;
+    border: 2px solid black;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 5px 5px;
+}
+
+.topdetails {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.belowdetails {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+.cardadditonaldetails {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#studiobutton {
+    margin-top: 53px;
+    margin-right: 40px;
+    background-color: #071F28;
+    color: #fff;
+    padding: 25px 47px;
+    border: none;
+    border-radius: 15px;
+}
+
+.IXPcountryName {
+    color: #071F28;
+}
+
+
+
+.editStudioButton {
+    margin-top: 225px !important;
+    margin-right: 40px !important;
+    background-color: #071F28 !important;
+    color: #fff !important;
+    padding: 6px 45px !important;
+    border: none !important;
+    border-radius: 15px !important;
+}
+
+#uniqueModalContent,
+.custom-modal-content {
+    width: 95vw !important;
+    height: 90vh !important;
+    margin: auto !important;
+}
+
+.custom-modal-dialog {
+    max-width: 100vw !important;
+    /* Ensure it doesn't exceed the viewport width */
+    width: 100%;
+    /* Take full width */
+    margin: 5vh auto !important;
+    /* Center it vertically with 5vh margin on top and bottom */
+}
+
+.studiocardDetailsholder {
+    flex: 1;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+}
+
+.buttoncontainer {
+    padding: 20px 20px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+}
+
+.delete {
+    padding: 2px 9px;
+    border: 2px solid #E80000;
+    border-radius: 15.2px;
+    background-color: #E80000;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+
+#update {
+    padding: 2px 9px;
+    border: 2px solid #1CC102;
+    border-radius: 15.2px;
+    background-color: #1CC102;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+
+
+#addnode {
+    padding: 2px 9px;
+    border: 2px solid #071F28;
+    border-radius: 15.2px;
+    background-color: #071F28;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+
+#addlink {
+    padding: 2px 9px;
+    border: 2px solid #071F28;
+    border-radius: 15.2px;
+    background-color: #071F28;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+#removelink{
+    padding: 2px 9px;
+    border: 2px solid #071F28;
+    border-radius: 15.2px;
+    background-color: #071F28;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;  
+}
+#importcsv {
+    width: 138px;
+    margin-top: 165px;
+    margin-bottom: 10px;
+    padding: 3px 12px;
+    border: 2px solid #1CC102;
+    border-radius: 15.2px;
+    background-color: #1CC102;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+
+#DownloadJSON {
+    padding: 3px 12px;
+    border: 2px solid #00B3FF;
+    border-radius: 15.2px;
+    background-color: #00B3FF;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+
+.CSVButtons {
+    margin-top: 165px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+.documentformat {
+    color: #036E9C;
+    font-family: "Open Sans";
+    font-size: 10px;
+}
+
+.editStudioHeadertag {
+    font-weight: bold;
+}
+
+.medium-toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+}
+
+.medium-toggle-switch input {
+    display: none;
+}
+
+.medium-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 30px;
+    transition: 0.4s;
+}
+
+.medium-slider.round {
+    border-radius: 34px;
+}
+
+.medium-slider.round:before {
+    border-radius: 50%;
+}
+
+.medium-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked+.medium-slider {
+    background-color: #2196F3;
+}
+
+input:checked+.medium-slider:before {
+    transform: translateX(30px);
+}
+
+.toggleplacement {
+    padding-top: 10px;
+}
+
+.link {
+    stroke-opacity: 0.6;
+}
+
+.node {
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+#updateModal .close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 1;
+    /* to ensure it's above other content */
+}
+.networkborder{
+    border:2px solid #d6ccc2;
+    border-radius: 16px;
+}
+#newNetworkModal .close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 1;
+    /* to ensure it's above other content */
+}
+
+#networkModal .close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 1;
+    /* to ensure it's above other content */
+}
+
+.updatecard {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+/* .updateright {
+    flex: 0. 6;
+}
+
+.updateleft {
+    flex: 0.4;
+} */
+
+.Savedetails {
+    padding: 2px 9px;
+    border: 2px solid #1CC102;
+    border-radius: 15.2px;
+    background-color: #1CC102;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+
+.savedetailsheader {
+    color: #1CC102;
+}
+
+.close {
+    font-size: 1.5rem;
+    color: #000;
+    opacity: 1;
+}
+
+/* You can use this CSS to target the close button specifically in the new modal */
+#addNodeModal .close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 1;
+    /* to ensure it's above other content */
+}
+
+/* This CSS targets the close button in the Link modal */
+#addLinkModal .close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 1;
+    /* to ensure it's above other content */
+}
+
+.addnodecard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex: 1;
+
+}
+
+.addnodeleft {
+padding: 20px 20px;
+    flex: 0.3;
+}
+
+.addnoderight {
+    padding: 20px 20px;
+    flex: 0.7;
+}
+
+.createnodeheader {
+    color: #071F28;
+}
+
+.createnode {
+    text-align: center;
+    padding: 2px 9px;
+    border: 2px solid #071F28;
+    border-radius: 15.2px;
+    background-color: #071F28;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+
+.addlinkcard {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.addlinkcardleft {
+    flex: 0.3;
+}
+
+.addlinkcardright {
+    flex: 0.7;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.AddSource {
+    margin-top: 7px;
+    text-align: center;
+    padding: 2px 9px;
+    border: 2px solid #0096c7;
+    border-radius: 15.2px;
+    background-color: #0096c7;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+.AddRemoveSource{
+    margin-top: 7px;
+    text-align: center;
+    padding: 2px 9px;
+    border: 2px solid #0096c7;
+    border-radius: 15.2px;
+    background-color: #0096c7;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+
+.AddDestination {
+    margin-top: 7px;
+    text-align: center;
+    padding: 2px 9px;
+    border: 2px solid #006d77;
+    border-radius: 15.2px;
+    background-color: #006d77;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+.AddRemoveDestination{
+    margin-top: 7px;
+    text-align: center;
+    padding: 2px 9px;
+    border: 2px solid #006d77;
+    border-radius: 15.2px;
+    background-color: #006d77;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+.addlinkheader {
+    font-weight: bold;
+}
+
+.createlink {
+    margin-top: 12px;
+    text-align: center;
+    padding: 4px 12px;
+    border: 2px solid #071F28;
+    border-radius: 15.2px;
+    background-color: #071F28;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+.removeLinkBtn{
+    margin-top: 12px;
+    text-align: center;
+    padding: 4px 12px;
+    border: 2px solid #071F28;
+    border-radius: 15.2px;
+    background-color: #071F28;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    outline: none;
+}
+
+.createlinkheader {
+    color: #071F28;
+}
+
+.modal-open .modal {
+    overflow-y: hidden;
+}
+
+.modal-open {
+    overflow: hidden;
+    padding-right: 0 !important;
+}
+
+.custom-button{
+    background-color: #1CC102 !important;
+    border:2px solid #1CC102!important;
+}
+
+
+.lefteditcard{
+    display: flex;
+    flex-direction: column;
+    flex:0.8;
+}
+.righeditcard{
+
+    flex:0.2;
+    padding:20 20px;
+    margin-left: 9px;
+}
+.maineditcard{
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+}
+.titlefilter{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.usefulinfocard{
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+flex: 1;
+}
+
+.usefulinfocardleft{
+    flex:0.4;
+    padding: 0px 10px;
+}
+
+.usefulinfocardright{
+    flex:0.6;
+    padding: 0px 10px;
+}
+
+.tableheaders{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.countryview{
+    border: 2px solid #01161e;
+    border-radius: 20px;
+   
+}
+.filterheader{
+    font-size: 30px;
+    font-weight: bold;
+    font-style: inherit;
+    
+}
+.nodedetailsheader{
+    font: 35px;
+    font-weight: bold;
+}
+.usefulinfocardright{
+    font: 35px;
+    font-weight: bold;
+}
+
+::-webkit-scrollbar{
+width: 10px;
+height: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: #343a40;
+   
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #335c67;
+    border-radius: 10px;
+  
+}
+::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+    }
+    
+    ::-webkit-scrollbar-track{
+        background-color: #343a40;
+       
+    }
+    
+    ::-webkit-scrollbar-thumb{
+        background-color: #335c67;
+        border-radius: 10px;
+      
+    }
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #36b37e;
+}
+
+.cardz {
+  width: 200px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+h4 {
+  color: #000;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.price-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30px;
+}
+
+label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.range-slider {
+  width: 180px;
+  position: relative;
+  margin: 15px 0 30px 0;
+}
+
+input[type=range] {
+  width: 100%;
+  background: transparent; 
+  position: absolute;
+  left: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #36b37e;
+  cursor: pointer;
+  margin-top: -5px;
+  position: relative;
+  z-index: 1;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  background: #e8e8e8;
+  border-radius: 3px;
+  border: none;
+}
+
+.custom-close {
+    position: absolute;
+    top: 10px;   /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    background-color: transparent; /* Makes the button background transparent */
+    border: none; /* Removes the border */
+    font-size: 18px; /* Adjust as needed */
+    cursor: pointer;
+}
+
+.custom-close:hover {
+    color: red; /* Change color on hover, adjust as needed */
+}
+
+
+#linktype{
+    width: 200px;
+    height: 30px;
+}

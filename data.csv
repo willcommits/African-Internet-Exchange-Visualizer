@@ -1,0 +1,6 @@
+Type,ID,Name,Website,City,Status,Source,Destination
+IXP,ixp1,IXP Name 1,www.ixp1.com,City 1,Active,,
+IXP,ixp2,IXP Name 2,www.ixp2.com,City 2,Active,,
+AS,as1,AS Name 1,www.as1.com,City 3,Active,ixp1,ixp2
+AS,as2,AS Name 2,www.as2.com,City 4,Active,ixp1,ixp2
+AS,as3,AS Name 3,www.as3.com,City 5,Active,ixp2,

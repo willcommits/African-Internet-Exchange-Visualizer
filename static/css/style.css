@@ -1,0 +1,235 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Century Gothic;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    -ms-overflow-style: none;
+}
+
+/* For Webkit browsers like Chrome and Safari */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* For Firefox */
+body {
+    scrollbar-width: none;
+}
+
+header {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/network.jpeg');
+	height: 100vh;
+	background-size: cover;
+	background-position: center;
+	min-height: 100px;
+
+}
+
+.logo img {
+	float: left;
+	width: 150px;
+	height: auto;
+}
+
+.title {
+	font-family: Josefin Sans;
+	width: 100%;
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	transform: translate(-30%, -65%);
+	
+}
+
+.title h1 {
+	color: #fff;
+	align-items: center;
+	display: flex;
+}
+.title h3{
+	color: #fff;
+	align-items: center;
+	display: flex;
+	text-align: center;
+}
+
+.ixp {
+	font-family: Open Sans;
+	position: absolute;
+	top: 70%;
+	left: 40%;
+	transform: translate(-50%, -50%);
+	width: 250px;
+	height: 150px;
+	color: #116183;
+	border-radius: 23px;
+	border: #116183;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.ixp :hover {
+	border-color: #007BFF;
+}
+
+.national :hover {
+	border-color: wheat;
+}
+
+.national {
+	font-family: Open Sans;
+	position: absolute;
+	top: 70%;
+	left: 60%;
+	transform: translate(-50%, -50%);
+	width: 250px;
+	height: 150px;
+	border-radius: 23px;
+	border: transparent;
+	background-color: #071F28;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.edit {
+	font-family: Open Sans;
+	position: absolute;
+	top: 70%;
+	left: 80%;
+	transform: translate(-50%, -50%);
+	width: 250px;
+	height: 150px;
+	border-radius: 23px;
+	border: transparent;
+	background-color: #071F28;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+nav.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #05162C;
+	width: 100%;
+	height: 8vh;
+	position: relative;
+	z-index: 1;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-brand {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+
+.navbar-brand img {
+	margin-right: 0.5rem;
+}
+
+/* This is optional; for the text color of the brand name */
+.navbar a {
+	color: white;
+	transition: color 0.3s;
+	font-family: Jost;
+}
+
+.navbar a:hover {
+	color: #007BFF;
+}
+
+.login {
+	color: white;
+	border: none;
+	margin-left: 80px;
+	margin-right: 10px;
+
+}
+
+/* ... previous styles ... */
+.container-fluid {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	/* ensure it takes the full width */
+}
+
+.button-group {
+	display: flex;
+	align-items: center;
+}
+
+.login,
+.signup {
+	color: white;
+	padding: 0.5em 1em;
+	border: none;
+	background: none;
+	/* Makes it transparent */
+	transition: background-color 0.3s, color 0.3s;
+	/* For smooth transitions */
+	cursor: pointer;
+	/* Hand icon on hover for better UX */
+	margin-left: 10px;
+	/* For spacing between buttons */
+
+}
+
+.login {
+
+	margin-right: 10px;
+}
+
+.signup {
+	background-color: #007BFF;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	/* Light blue background */
+	border-radius: 15px;
+	margin-right: 10px;
+
+}
+
+/* Hover styles for better user interaction */
+.login:hover,
+.signup:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	/* Light highlight on hover */
+}
+
+.signup:hover {
+	background-color: #0056b3;
+	/* Darken the blue a bit on hover */
+}
+
+.viz {
+	text-align: center;
+	font-size: 37px;
+	font-family: Josefin Sans;
+}
+
+#country-info {
+	border-radius: 15px;
+}
+.download-button {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px; 
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px; 
+    outline: none; 
+    text-decoration: none; 
+}
+/* Style for hover state */
+.download-button:hover {
+    background-color: #0056b3; /* Darken background color on hover */
+}

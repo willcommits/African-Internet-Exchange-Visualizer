@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Images/africa.png') }}" alt="Logo" width="30" height="30"> AIXV</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('ixpView') }}">IXPview</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('edit') }}">EditStudio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Documentation</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">About US</a></li>
+            </ul>
+        </div>
+    </nav>
+<div class="grid-container">
+    <div class="grid-item">
+        <div >
+            <div >
+                <div >
+                    <h3 class=>
+                        <span class="theme-icon-holder card-icon-holder me-2">
+                            <i class="fas fa-map-signs"></i>
+                        </span><!--//card-icon-holder-->
+                        <span class="card-title-text">Introduction</span>
+                    </h3>
+                    <div class="card-text">
+                        Our project provides a specific online tool for academics to observe and simulate Africa's Internet connectivity via IXPs and AS.The platform features three distinct views:
+                        <br>
+                        <p></p>
+                        <p>1. IXP examine: Displays African IXPs based on their specific geolocation, allowing users to pick an IXP, examine all linked AS, and access important information such as IXP ID, name, and net count.
+                        </p>
+                        <p></p>
+                        <p>2. National View: Displays the AS connections of each African country. When a nation is selected, all of its AS and their relationships are displayed, with colors denoting customer-to-provider (c2p), peer-to-peer (p2p), and sibling-to-sibling (s2s) linkages.
+                        </p>
+                        <p></p>
+                        <p>
+                        3. Edit Studio: Allows researchers to import and view network data from CSV or Json files, broadening the area of visualization beyond simply African networks. Users can also change, add, or remove nodes in this area.
+                        </p>
+                        <p></p>
+                        <p>
+                        The 'Experiment' function in the first two views allows researchers to model prospective changes in Internet infrastructures by updating, adding, or deleting nodes and connections.
+                        </p>
+
+                    </div>
+                    <a class="card-link-mask" href="docs-page.html#section-1"></a>
+                </div><!--//card-body-->
+            </div><!--//card-->
+        </div><!--//col-->
+    </div>
+    <div class="grid-item">
+        <div >
+            <div >
+                <div >
+                    <h3 class=>
+                        <span class="theme-icon-holder card-icon-holder me-2">
+                            <i class="fas fa-map-signs"></i>
+                        </span><!--//card-icon-holder-->
+                        <span class="card-title-text">User Manual</span>
+                    </h3>
+                    <div class="card-text">
+                        Once the application is successfully running in your browser, you'll have the capability to perform the following tasks: 
+                        <br>
+                        <p></p>
+                        <p>1.
+                            Adding a Node: IDs are auto-generated; users fill a form detailing node type, name, website, relations, city, and status.
+                        </p>
+                        <p></p>
+                        <p>2. Adding a Link: Select a source node, click 'Add Source', choose a destination, click 'Add Destination', then 'Add Link' to connect. Manual ID input is disabled for data integrity.
+                        </p>
+                        <p></p>
+                        <p>
+                        3. Removing a Node: Users can effortlessly remove a node by simply clicking on the node they wish to delete, followed by clicking the 'Delete' button. This action will remove the selected node from the system
+                        </p>
+                        <p></p>
+                        <p>
+                        4. Search IXP on Map: Users can find an IXP by name or longname, and the map auto-navigates to its location, displaying its network connections.
+                        </p>
+                        <p>
+                        5.  Search Country: In the national view, users can search for a country to display its associated AS networks, aiding map navigation and exploration.
+                        </p>
+                        <p>
+                            6. Filter: The user can apply various filters within the application which includes, 
+
+                            The AS Degree filter which allows the user to filter based on the number of connections that the AS has in the Dataset that we used, not strictly our own database. 
+                            
+                            The P2P (peer to peer), P2C (provider to Customer) and S2S (Sibling to Sibling) relationship in the visualisation are represented with different colours, depending on which on ethe user wants to view, they can use the toggle to tigger filtering based on the type of link. 
+                        </p>
+
+                    </div>
+                    <a class="card-link-mask" href="docs-page.html#section-1"></a>
+                </div><!--//card-body-->
+            </div><!--//card-->
+        </div><!--//col-->
+    </div>
+    
+</div>
+</body>
+
+</html>
